@@ -1,5 +1,5 @@
 import { GoogleGenAI } from "@google/genai";
-import { CardData } from "../types";
+import { CardData } from "../types.ts";
 
 const GEMINI_API_KEY = process.env.API_KEY || '';
 
@@ -11,7 +11,6 @@ export const analyzeCardWithGemini = async (card: CardData): Promise<string> => 
   try {
     const ai = new GoogleGenAI({ apiKey: GEMINI_API_KEY });
     
-    // Using Flash for speed as this is an interactive UI element
     const response = await ai.models.generateContent({
       model: 'gemini-2.5-flash',
       contents: `

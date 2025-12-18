@@ -1,9 +1,9 @@
 import React from 'react';
-import { CARDS } from './constants';
-import { Card } from './components/Card';
-import { Geopolitics } from './components/Geopolitics';
-import { SpaceRace } from './components/SpaceRace';
-import { ChevronDownIcon } from './components/Icons';
+import { CARDS } from './constants.ts';
+import { Card } from './components/Card.tsx';
+import { Geopolitics } from './components/Geopolitics.tsx';
+import { SpaceRace } from './components/SpaceRace.tsx';
+import { ChevronDownIcon } from './components/Icons.tsx';
 
 export default function App() {
   const scrollToCards = () => {

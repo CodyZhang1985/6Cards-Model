@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
-import { GEOPOLITICS, CARDS } from '../constants';
-import { GlobeIcon, ChevronDownIcon } from './Icons';
+import { GEOPOLITICS, CARDS } from '../constants.ts';
+import { GlobeIcon } from './Icons.tsx';
 
 export const Geopolitics: React.FC = () => {
   const [activeRegion, setActiveRegion] = useState(GEOPOLITICS[0].region);
@@ -21,7 +21,6 @@ export const Geopolitics: React.FC = () => {
       </div>
 
       <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
-        {/* Navigation / Selector (Desktop: Sidebar, Mobile: Tabs) */}
         <div className="lg:col-span-1 space-y-4">
           {GEOPOLITICS.map((geo) => (
             <button
@@ -48,12 +47,10 @@ export const Geopolitics: React.FC = () => {
           ))}
         </div>
 
-        {/* Content Display */}
         <div className="lg:col-span-2 bg-slate-900 border border-slate-800 rounded-2xl p-8 relative overflow-hidden">
-          {/* Background Decor */}
           <div className="absolute top-0 right-0 -mr-16 -mt-16 w-64 h-64 bg-blue-500/5 rounded-full blur-3xl"></div>
 
-          <div className="relative z-10 animate-[fadeIn_0.5s_ease-out]">
+          <div className="relative z-10">
             <div className="flex items-center gap-4 mb-6">
               <GlobeIcon className="w-8 h-8 text-blue-400" />
               <h3 className="text-3xl font-bold text-white">{activeData.region} 局势分析</h3>
@@ -64,7 +61,6 @@ export const Geopolitics: React.FC = () => {
             </p>
 
             <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-8">
-              {/* Strengths */}
               <div>
                 <h4 className="text-sm font-bold text-slate-500 uppercase tracking-wider mb-4">核心优势（手牌）</h4>
                 <div className="space-y-3">
@@ -86,7 +82,6 @@ export const Geopolitics: React.FC = () => {
                 </div>
               </div>
 
-              {/* Weaknesses */}
               <div>
                 <h4 className="text-sm font-bold text-slate-500 uppercase tracking-wider mb-4">关键短板</h4>
                 <div className="p-4 bg-red-500/10 border border-red-500/20 rounded-xl">
@@ -104,22 +99,6 @@ export const Geopolitics: React.FC = () => {
                 </div>
               </div>
             </div>
-
-            {activeData.weaknesses.length > 0 && (
-               <div className="mt-6 pt-6 border-t border-slate-800">
-                  <h4 className="text-xs text-slate-600 mb-2">缺失/薄弱的牌</h4>
-                  <div className="flex gap-2">
-                    {activeData.weaknesses.map(wid => {
-                       const card = CARDS.find(c => c.id === wid);
-                       return (
-                         <span key={wid} className="px-3 py-1 bg-slate-800 text-slate-500 text-xs rounded-full border border-slate-700 opacity-60">
-                           {card?.title}
-                         </span>
-                       )
-                    })}
-                  </div>
-               </div>
-            )}
           </div>
         </div>
       </div>

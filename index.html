@@ -7,6 +7,9 @@
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&family=JetBrains+Mono:wght@400;700&family=Noto+Sans+SC:wght@300;400;500;700;900&display=swap" rel="stylesheet">
     <script>
+      // 垫片：确保在浏览器环境中访问 process.env 不会崩溃
+      window.process = window.process || { env: { API_KEY: "" } };
+      
       tailwind.config = {
         theme: {
           extend: {
@@ -16,12 +19,12 @@
             },
             colors: {
               card: {
-                power: '#fbbf24', // Amber
-                compute: '#22d3ee', // Cyan
-                algo: '#a78bfa', // Violet
-                data: '#34d399', // Emerald
-                talent: '#f472b6', // Pink
-                market: '#fb923c', // Orange
+                power: '#fbbf24',
+                compute: '#22d3ee',
+                algo: '#a78bfa',
+                data: '#34d399',
+                talent: '#f472b6',
+                market: '#fb923c',
               }
             },
             animation: {
@@ -49,7 +52,6 @@
       .rotate-y-180 {
         transform: rotateY(180deg);
       }
-      /* Custom Scrollbar */
       ::-webkit-scrollbar {
         width: 8px;
       }
@@ -64,18 +66,21 @@
         background: #64748b;
       }
     </style>
-  <script type="importmap">
+    <script type="importmap">
 {
   "imports": {
     "@google/genai": "https://esm.sh/@google/genai@^1.33.0",
-    "react-dom/": "https://esm.sh/react-dom@^19.2.3/",
+    "react-dom/client": "https://esm.sh/react-dom@^19.2.3/client",
     "react": "https://esm.sh/react@^19.2.3",
+    "react-dom/": "https://esm.sh/react-dom@^19.2.3/",
     "react/": "https://esm.sh/react@^19.2.3/"
   }
 }
 </script>
-</head>
+  </head>
   <body>
     <div id="root"></div>
+    <!-- 显式引入入口文件 -->
+    <script type="module" src="./index.tsx"></script>
   </body>
 </html>

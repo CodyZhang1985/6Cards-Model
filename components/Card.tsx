@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
-import { CardData } from '../types';
-import { ZapIcon, CpuIcon, NetworkIcon, DatabaseIcon, UsersIcon, ShoppingBagIcon, SparklesIcon, InfoIcon } from './Icons';
-import { analyzeCardWithGemini } from '../services/geminiService';
+import { CardData } from '../types.ts';
+import { ZapIcon, CpuIcon, NetworkIcon, DatabaseIcon, UsersIcon, ShoppingBagIcon, SparklesIcon, InfoIcon } from './Icons.tsx';
+import { analyzeCardWithGemini } from '../services/geminiService.ts';
 
 interface CardProps {
   data: CardData;
@@ -13,8 +13,8 @@ export const Card: React.FC<CardProps> = ({ data }) => {
   const [isAnalyzing, setIsAnalyzing] = useState(false);
 
   const handleGeminiAnalysis = async (e: React.MouseEvent) => {
-    e.stopPropagation(); // Prevent card flip
-    if (analysis) return; // Already analyzed
+    e.stopPropagation();
+    if (analysis) return;
 
     setIsAnalyzing(true);
     const result = await analyzeCardWithGemini(data);
